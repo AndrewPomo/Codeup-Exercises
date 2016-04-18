@@ -36,10 +36,8 @@ foreach ($things as $thingValue) {
 		$thingNum++;
 	}elseif (is_string($thingValue)) {
 		echo "Thing number $thingNum is a string.\n";
+		$thingNum++;
 	}
-	
-	// }elseif (is_scalar($thingValue)) {
-	// 	echo "$thingValue is a scalar value."
 };
 
 echo "\n Second loop \n";
@@ -48,28 +46,55 @@ $thingNum = 1;
 foreach ($things as $thingValue) {
 	if (is_scalar($thingValue)) {
 		if (is_bool($thingValue)) {
-			echo "Thing number $thingNum is a boolean.\n";
+			echo "Thing number $thingNum is a boolean. Its value is $thingValue.\n";
 			$thingNum++;
 		}elseif (is_float($thingValue)) {
-			echo "Thing number $thingNum is a floating point number.\n";
+			echo "Thing number $thingNum is a floating point number. Its value is $thingValue.\n";
 			$thingNum++;
 		}elseif (is_int($thingValue)) {
-			echo "$thingNum is an integer.\n";
+			echo "$thingNum is an integer. Its value is $thingValue.\n";
 			$thingNum++;
 		}elseif (is_null($thingValue)) {
-			echo "Thing number $thingNum is nothing.\n";
+			echo "Thing number $thingNum is nothing. Its value is $thingValue.\n";
 			$thingNum++;
 		}elseif (is_string($thingValue)) {
-			echo "Thing number $thingNum is a string.\n";
+			echo "Thing number $thingNum is a string. Its value is $thingValue.\n";
 			$thingNum++;
 		}
 	} else {
-		echo "$thingNum is not scalar, so it doesn't matter.\n";
+		echo "$thingNum is not scalar, so its value doesn't matter.\n";
 		$thingNum++;
 	}
-	// }elseif (is_scalar($thingValue)) {
-	// 	echo "$thingValue is a scalar value."
-	// }elseif (is_string($thingValue)) {
-	// 	echo "$thingValue is a string."
-	// }
 };
+
+echo "\n Third loop \n";
+
+$thingNum = 1;
+foreach ($things as $thingValue) {
+	if (is_array($thingValue)) {
+		echo "Thing number $thingNum is an array. It's values are: \n";
+		for ($i=0; $i < count($thingValue); $i++) { 
+			echo "$thingValue[$i]\n";
+		}
+		$thingNum++;
+	} elseif (is_bool($thingValue)) {
+		echo "Thing number $thingNum is a boolean. Its value is $thingValue.\n";
+		$thingNum++;
+	}elseif (is_float($thingValue)) {
+		echo "Thing number $thingNum is a floating point number. Its value is $thingValue.\n";
+		$thingNum++;
+	}elseif (is_int($thingValue)) {
+		echo "$thingValue is an integer. Its value is $thingValue.\n";
+		$thingNum++;
+	}elseif (is_null($thingValue)) {
+		echo "Thing number $thingNum is nothing. Its value is $thingValue.\n";
+		$thingNum++;
+	}elseif (is_numeric($thingValue)) {
+		echo "Thing number $thingNum is a numeric value. Its value is $thingValue.\n";
+		$thingNum++;
+	}elseif (is_string($thingValue)) {
+		echo "Thing number $thingNum is a string. Its value is $thingValue.\n";
+		$thingNum++;
+	}
+};
+
