@@ -1,64 +1,69 @@
 <?php
 
 $a = 50;
-$b = 1;
+$b = 0;
 
-function add($a, $b)
+function throwErrorMessage ($a, $b)
+{
+	if ($b == 'div0'){
+		return "You can't divide by zero, fool.";
+	} else {
+		return "Your current inputs are $a and $b. This program wont work unless both inputs are numbers. Enter numbers.";
+	}
+}
+
+function add($a, $b, $c = null)
 {
 	if (!is_numeric($a) || !is_numeric($b)) {
-		echo "Error! Your inputs are not numeric!";
+		return throwErrorMessage($a, $b);
 	} else {
-		return $a + $b;
+		return $a + $c;
 	}
 }
 
 function subtract($a, $b)
 {
-	$b = ($b*-1);
-    return add($a, $b);
+	$c = ($b*-1);
+    return add($a, $b, $c);
 }
 
 function multiply($a, $b)
 {
     $c = ($a * ($b-1));
-    $b = $c;
-    return add($a, $b);
+    return add($a, $b, $c);
 }
 
 function divide($a, $b)
 {	
-	if ($b = 0) {
-		echo "Error! Cannot divide by zero!";
-	} else if ($b = 1){
-		$b = 0;
-		return add($a, $b);
+	if ($b == 0) {
+		return throwErrorMessage(null, 'div0');
+	} elseif ($b = 1){
+		$c = 0;
+		return add($a, $b, $c);
 	} else {
 		$c = -($a * (($b-1)/$b));
-		$b = $c;
-		return add($a, $b);
+		return add($a, $b, $c);
 	}
 }
 
 function modulus($a, $b)
-{
-
-    return $a % $b;
+{	if ($b == 0) {
+		return throwErrorMessage(null, 'div0');
+	} else{
+		$d = $a % $b;
+	    $c = $d - $a;
+	    return add($a, $b, $c);
+	}
 }
-
-echo "Add 50 & 5\n";
-echo add($a, $b);
+echo "$a + $b = ". add($a, $b);
 echo PHP_EOL;
-echo "Subtract 5 from 50\n";
-echo subtract($a, $b);
+echo "$a - $b = ". subtract($a, $b);
 echo PHP_EOL;
-echo "Multiply 5 by 50\n";
-echo multiply($a, $b);
+echo "$a x $b = ". multiply($a, $b);
 echo PHP_EOL;
-echo "Divide 50 by 5\n";
-echo divide($a, $b);
+echo "$a / $b = ". divide($a, $b);
 echo PHP_EOL;
-echo "Find remainder of 50 divided by 5\n";
-echo modulus($a, $b);
+echo "The remainder of $a / $b = ". modulus($a, $b);
 echo PHP_EOL;
 
 
