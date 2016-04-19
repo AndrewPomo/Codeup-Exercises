@@ -72,9 +72,9 @@ echo "\n Third loop \n";
 $thingNum = 1;
 foreach ($things as $thingValue) {
 	if (is_array($thingValue)) {
-		echo "Thing number $thingNum is an array. It's values are: \n";
-		for ($i=0; $i < count($thingValue); $i++) { 
-			echo "$thingValue[$i]\n";
+		echo "Thing number $thingNum is an array. Its values are: \n";
+		foreach ($thingValue as $arrayValues) {
+			echo "$arrayValues\n";
 		}
 		$thingNum++;
 	} elseif (is_bool($thingValue)) {
