@@ -1,7 +1,7 @@
 <?php
 
 $a = 50;
-$b = 5;
+$b = 1;
 
 function add($a, $b)
 {
@@ -26,10 +26,17 @@ function multiply($a, $b)
 }
 
 function divide($a, $b)
-{
-    $c = -($a * (($b-1)/$b));
-    $b = $c;
-    return add($a, $b);
+{	
+	if ($b = 0) {
+		echo "Error! Cannot divide by zero!";
+	} else if ($b = 1){
+		$b = 0;
+		return add($a, $b);
+	} else {
+		$c = -($a * (($b-1)/$b));
+		$b = $c;
+		return add($a, $b);
+	}
 }
 
 function modulus($a, $b)
