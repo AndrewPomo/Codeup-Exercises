@@ -24,5 +24,9 @@ $books = array(
 );
 
 foreach ($books as $bookTitle => $bookInfo) {
-	echo "$bookTitle - by {$bookInfo['author']} - was published in {$bookInfo['published']} and is {$bookInfo['pages']} pages long.\n";
+	if ($bookInfo['published'] > 1950){ 
+		echo "$bookTitle - by {$bookInfo['author']} - was published in {$bookInfo['published']} and is {$bookInfo['pages']} pages long.\n";
+	} else {
+		continue;
+	}
 }
