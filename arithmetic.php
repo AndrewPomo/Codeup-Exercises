@@ -5,7 +5,11 @@ $b = 5;
 
 function add($a, $b)
 {
-	return $a + $b;
+	if (!is_numeric($a) || !is_numeric($b)) {
+		echo "Error! Your inputs are not numeric!";
+	} else {
+		return $a + $b;
+	}
 }
 
 function subtract($a, $b)
@@ -23,13 +27,14 @@ function multiply($a, $b)
 
 function divide($a, $b)
 {
-    $c = -($a*(($b-1)/$b));
+    $c = -($a * (($b-1)/$b));
     $b = $c;
     return add($a, $b);
 }
 
 function modulus($a, $b)
 {
+
     return $a % $b;
 }
 
