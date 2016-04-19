@@ -10,17 +10,22 @@ function add($a, $b)
 
 function subtract($a, $b)
 {
-    return $a - $b;
+	$b = ($b*-1);
+    return add($a, $b);
 }
 
 function multiply($a, $b)
 {
-    return $a * $b;
+    $c = ($a * ($b-1));
+    $b = $c;
+    return add($a, $b);
 }
 
 function divide($a, $b)
 {
-    return $a / $b;
+    $c = -($a*(($b-1)/$b));
+    $b = $c;
+    return add($a, $b);
 }
 
 function modulus($a, $b)
