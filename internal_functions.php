@@ -15,9 +15,21 @@ function inspect($var)
 				$var = "false";
 			}
 			break;
+		case "array":
+			if (count($var) == 0) {
+				$var = "an empty array";
+			} else {
+				$var = "an array";
+			}
+			break;
+		case "string":
+			if ($var == '') {
+				$var = "empty";
+			}
+			break;
 	}
 
-	return "The $varType value is $var";
+	return "The $varType is $var.";
 }
 
 // Do not mofify these variables!
