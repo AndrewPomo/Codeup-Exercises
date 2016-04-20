@@ -45,12 +45,17 @@ $companies = [
     ]
 ];
 
+
+
 ksort($companies);
+asort($companies);
 
 foreach ($companies as $companyName => $employees) {
     sort($employees);
     // var_dump($companyName);
     $companies[$companyName] = $employees;
+
+
 }
 
 print_r($companies);
