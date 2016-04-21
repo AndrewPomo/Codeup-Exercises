@@ -26,7 +26,23 @@ function comparer($array1, $array2)
 	return "The arrays have $inCommon item in common.";
 }
 
+function combineArrays($array1, $array2)
+{
+	$newArray = [];
+	foreach ($array1 as $name) {
+		$compareItem = array_shift($array2);
+		if ($name == $compareItem) {
+			array_push($newArray, $name);
+		} else {
+			array_push($newArray, $name, $compareItem);
+		}
+	}
+	print_r($newArray);
+}
+
 // echo finder('Tina', $names);
 // echo finder('Bob', $names);
 
-echo comparer($names, $compare);
+// echo comparer($names, $compare);
+
+echo combineArrays($names, $compare);
