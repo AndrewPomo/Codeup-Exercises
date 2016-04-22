@@ -4,14 +4,19 @@ function phoneDash($number)
 	return substr($number, 0, 3) .'-'.substr($number, 3, 3) .'-'.substr($number, 6);
 }
 
+function fileToArray($filename)
+{
+    $handle = fopen($filename, 'r');
+	$openFile = fread($handle, filesize($filename));
+	$newArray = explode("\n", trim($openFile));
+    fclose($handle);
+	return $newArray;
+}
+
 function parseContacts($filename)
 {
-    $contacts = array();
+    $contacts = fileToArray($filename);
     $newContacts = array();
-    // todo - read file and parse contacts
-    $handle = fopen($filename, 'r');
-	$contactFile = fread($handle, filesize($filename));
-	$contacts = explode("\n", trim($contactFile));
 	foreach ($contacts as $contact => $contactInfo) {
 		$contactInfo = explode("|", $contactInfo);
 		$contactInfo = [
@@ -20,7 +25,6 @@ function parseContacts($filename)
 		];
 		array_push($newContacts, $contactInfo);
 	}
-    fclose($handle);
     return $newContacts;
 }
 
