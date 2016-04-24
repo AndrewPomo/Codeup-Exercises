@@ -7,8 +7,8 @@ function phoneDash($number)
 function fileToArray($filename)
 {
     $handle = fopen($filename, 'r');
-	$openFile = fread($handle, filesize($filename));
-	$newArray = explode("\n", trim($openFile));
+	$openedFile = fread($handle, filesize($filename));
+	$newArray = explode("\n", trim($openedFile));
     fclose($handle);
 	return $newArray;
 }
