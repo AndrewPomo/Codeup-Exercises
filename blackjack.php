@@ -11,6 +11,8 @@ $cards = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
 // build a deck (array) of cards
 // card values should be "VALUE SUIT". ex: "7 H"
 // make sure to shuffle the deck before returning it
+
+// Builds a deck. This works!
 function buildDeck($suits, $cards) {
 	$deck = [];
   	foreach ($cards as $card) {
@@ -20,18 +22,18 @@ function buildDeck($suits, $cards) {
   		}
   	}
   	shuffle($deck);
-  	print_r($deck);
+  	return $deck;
 }
+
 // determine if a card is an ace
 // return true for ace, false for anything else
+// This works!
 function cardIsAce($card) {
-  	foreach ($deck as $card) {
-  		$aceCheck = strpos($card, "A");
-  		if ($aceCheck >= 0) {
-  			return TRUE;
-  		} else {
-  			return FALSE;
-  		}
+	$valCheck = substr($card, 0, 1);
+  	if ($valCheck == "A") {
+		return TRUE;
+	} else {
+		return FALSE;
   	}
 }
 
@@ -39,18 +41,35 @@ function cardIsAce($card) {
 // aces are worth 11
 // face cards are worth 10
 // numeric cards are worth their value
+// This works!
 function getCardValue($card) {
-	foreach ($deck as $card) {
-		
+	$valCheck = substr($card, 0, 1);
+	if ($valCheck == "A"){
+		$cardVal = 11;
+	} elseif (is_numeric($valCheck)) {
+		$cardVal = intval($valCheck);
+	} else {
+		$cardVal = 10;
 	}
+	return $cardVal;
 }
 
 // get total value for a hand of cards
 // don't forget to factor in aces
 // aces can be 1 or 11 (make them 1 if total value is over 21)
 function getHandTotal($hand) {
-  // todo
+	$handArray = [];
+	foreach ($hand as $card) {
+  		$cardVal = getCardValue($card);
+  		array_push($handArray, $cardVal);
+	}
+	return array_sum($handArray);
+
 }
+$playerHand = ["K H", "6 H", "A H"];
+
+getHandTotal($playerHand);
+
 
 // draw a card from the deck into a hand
 // pass by reference (both hand and deck passed in are modified)
@@ -73,8 +92,8 @@ function echoHand($hand, $name, $hidden = false) {
 $deck = buildDeck($suits, $cards);
 
 // initialize a dealer and player hand
-$dealer = [];
-$player = [];
+// $dealer = [];
+// $player = [];
 
 // dealer and player each draw two cards
 // todo
