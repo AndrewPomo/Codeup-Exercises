@@ -73,13 +73,14 @@ function getHandTotal($hand) {
 	if ($handVal > 21) {
 		$handVal = $handVal - ($aceCount * 10);
 	}
-	echo $handVal;
+	return $handVal;
 }
 
 // draw a card from the deck into a hand
 // pass by reference (both hand and deck passed in are modified)
 function drawCard(&$hand, &$deck) {
-	
+	$drawnCard = array_shift($deck);
+	array_push($hand, $drawnCard);
 }
 
 // print out a hand of cards
@@ -90,15 +91,15 @@ function drawCard(&$hand, &$deck) {
 // or:
 // Player: [J D] [2 D] Total: 12
 function echoHand($hand, $name, $hidden = false) {
-  // todo
+	
 }
 
 // build the deck of cards
 $deck = buildDeck($suits, $cards);
 
 // initialize a dealer and player hand
-// $dealer = [];
-// $player = [];
+$dealer = [];
+$player = [];
 
 // dealer and player each draw two cards
 // todo
