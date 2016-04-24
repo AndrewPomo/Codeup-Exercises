@@ -57,24 +57,29 @@ function getCardValue($card) {
 // get total value for a hand of cards
 // don't forget to factor in aces
 // aces can be 1 or 11 (make them 1 if total value is over 21)
+
 function getHandTotal($hand) {
 	$handArray = [];
+	$aceCount = 0;
 	foreach ($hand as $card) {
   		$cardVal = getCardValue($card);
   		array_push($handArray, $cardVal);
+  		$aceCheck = cardIsAce($card);
+  		if ($aceCheck == TRUE) {
+  			$aceCount++;
+  		}
 	}
-	return array_sum($handArray);
-
+	$handVal = array_sum($handArray);
+	if ($handVal > 21) {
+		$handVal = $handVal - ($aceCount * 10);
+	}
+	echo $handVal;
 }
-$playerHand = ["K H", "6 H", "A H"];
-
-getHandTotal($playerHand);
-
 
 // draw a card from the deck into a hand
 // pass by reference (both hand and deck passed in are modified)
 function drawCard(&$hand, &$deck) {
-  // todo
+	
 }
 
 // print out a hand of cards
