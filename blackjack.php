@@ -57,7 +57,6 @@ function getCardValue($card) {
 // get total value for a hand of cards
 // don't forget to factor in aces
 // aces can be 1 or 11 (make them 1 if total value is over 21)
-
 function getHandTotal($hand) {
 	$handArray = [];
 	$aceCount = 0;
@@ -91,6 +90,7 @@ function drawCard(&$hand, &$deck) {
 // or:
 // Player: [J D] [2 D] Total: 12
 function echoHand($hand, $name, $hidden = false) {
+	$showHand = [];
 	
 }
 
