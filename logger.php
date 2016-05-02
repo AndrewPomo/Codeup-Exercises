@@ -3,7 +3,7 @@
 function logMessage($logLevel, $message)
 {
     $currentDate = date('Y-m-d');
-    $currentTime = time('H:M:S');
+    $currentTime = date('H:M:S');
     $filename = "log-$currentDate.log";
 	$handle = fopen($filename, 'a');
 	fwrite($handle, "$currentDate $currentTime [$logLevel] $message\n");
