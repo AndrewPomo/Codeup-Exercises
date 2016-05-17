@@ -4,13 +4,10 @@ class Log
 
 {
 	public $filename;
-	public $currentTime;
-	public $currentDate;
+	public $handle;
 	public function logMessage($logLevel, $message)
 	{
-		$handle = fopen($this->filename, 'a');
-		fwrite($handle, "$this->currentDate $this->currentTime [$logLevel] $message\n");
-		fclose($handle);
+		fwrite($this->handle, date('Y-m-d')." ".date('H:i:s')."[$logLevel] $message\n");
 	}
 
 	public function info($message)
@@ -22,6 +19,19 @@ class Log
 	{
 		$this->logMessage("ERROR", $message);
 	}
+
+	public function __construct($prefix = 'log')
+    {
+		$this->prefix = $prefix;
+		$this->filename = $this->prefix."-".date('Y-m-d').".log";
+		$this->handle = fopen($this->filename, 'a');
+    }
+
+    public function __destruct()
+    {
+		fclose($this->handle);
+        
+    }
 }
 
  ?>
